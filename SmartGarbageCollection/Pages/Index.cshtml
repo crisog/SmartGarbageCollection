@@ -1,0 +1,34 @@
+﻿@page "/"
+@model IndexModel
+@{
+    ViewData["Title"] = "Live Containers System";
+
+}
+
+<div class="text-center" id="content">
+    <h1 class="display-4">Lista de contenedores</h1>
+    <table style="background-color:#FFFFFF; border-style:inset;border-width:1px;border-color:#6D7B8D; padding:2px;width:100%;table-layout:fixed; margin-bottom:auto;" cellpadding="1" cellspacing="1">
+        <tr style="background-color:#2d364d ; color:#FFFFFF ;border-style:dashed;border-width:2px;border-color:0A2464;" >
+            <td width="30" align="center">Container ID</td>
+            <td width="30" align="center">Porcentaje</td>
+            <td width="30" align="center">Zona</td>
+        </tr>
+    @foreach (var container in Model.containers)
+    {
+        <tr>
+            <td width="20" align="center">@container.RowKey</td>
+            <td width="20" align="center">@container.Percent</td>
+            <td width="20" align="center">@container.PartitionKey</td>
+        </tr>
+        
+    }
+    </table>
+    <h1>Ruta Optimizada</h1>
+    @for (int i = 0; i < Model.optimizedRoute.Count - 1; i++)
+    {
+        <h3>@Model.optimizedRoute[i]</h3>
+    }
+
+        <input type='button' onclick='location.reload();' value='Refresh Page' />
+</div>
+
